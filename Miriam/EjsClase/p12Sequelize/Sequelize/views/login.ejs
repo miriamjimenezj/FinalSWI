@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/login.css' />
+    </head>
+    <body>
+    
+        <div class="container">
+            <h2>INICIO DE SESIÓN</h2>
+            <form id="loginForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+        
+            <button type="submit">Iniciar sesión</button>
+            
+            </form>
+
+            <h2 style="text-align: center;">¿TODAVÍA NO TIENES CUENTA?<br> REGISTRATE GRATIS EN EL SIGUIENTE BOTÓN: </h2>
+            <a href="/register"><button>Registrarse</button></a>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="/javascripts/login.js"></script>
+    </body>
+</html>

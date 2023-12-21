@@ -1,0 +1,12 @@
+<%- include("header", {}) %>
+<h1><%= title %></h1>
+<form id="myform" onsubmit="return validarFormulario()" method="post" action="/registro">
+    <label>Username:</label>
+    <input type="text" id="user" name="user"><br>
+    <label>Password:</label>
+    <input type="password" id="pass1" name="pass1"><br>
+    <label>Repeat Password:</label>
+    <input type="password" id="pass2" name="pass2"><br>
+    <button type="submit">Submit</button>
+</form>
+<%- include("footer", {}) %>

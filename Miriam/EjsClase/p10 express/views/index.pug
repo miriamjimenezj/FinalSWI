@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  a(href='/login').btn Login
+  ul
+    each image in imageList
+      li
+        img(src=image)

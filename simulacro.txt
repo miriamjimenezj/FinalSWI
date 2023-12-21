@@ -1,0 +1,111 @@
+INSTALAR NODEJS
+	sudo apt update
+	sudo apt install nodejs
+	sudo apt install npm
+	npm install http-errors
+
+INICIAR APP
+	node app.js
+
+INICIAR APP CON NPM START nmp start
+	
+	- Abrir package.json y añadir
+		...},
+		
+		"scripts": {
+			"start": "node ./bin/www"
+		}
+	}
+	
+CAMBIAR PUERTO:
+
+	- Abrir bin/www
+	buscar la siguiente línea y cambiar el número de puerto:
+	
+	var port = normalizePort(process.env.PORT || '3000');
+
+
+CAMBIAR PUERTO POR TERMINAL:
+	Para que sea en minúscilas:
+		var port = normalizePort(process.env.port || '3000');
+	Arrancar:	
+		port=4000 npm start
+	Para que sea en mayusculas:
+		var port = normalizePort(process.env.PORT || '3000');
+	Arrancar:
+		PORT=4000 npm start
+
+	OTRA OPCIÓN CAMBIAR PUERTO:
+		var port = normalizePort(process.env.PORT || process.argv[2] || '3000');
+		Arrancar:
+			npm start 3050
+
+
+CREAR PÁGINA DE REGISTRO:
+	- En views creamos /views/registro.ejs y copiamos contenido de login.ejs con los requisitos de registro:
+	<%- include("header", {}) %>
+	<h1><%= title %></h1>
+	<form method="post" action="/registro">
+		<label>Username:</label>
+		<input type="text" id="user" name="user"><br>
+		<label>Password:</label>
+		<input type="password" id="pass1" name="pass1"><br>
+		<label>Repeat Password:</label>
+		<input type="password" id="pass2" name="pass2"><br>
+		<button type="submit">Submit</button>
+	</form>
+	<%- include("footer", {}) %>
+	
+	- Editamos app.js para incluir página de registro:
+	
+	//Creamos router de registro
+	let registerRouter = require('./routes/registro');
+	
+	//Buscamos app.use y añadimos:
+	app.use('/registro', registerRouter);
+
+	- Creamos /routes/registro.js y copiamos el contenido de login.js cambiando:
+	router.get('/', function(req, res, next) {
+		res.render('registro', { title: 'Registro', user: req.session.user});
+	});
+	
+AÑADIR AL MENÚ PÁGINA DE REGISTRO:
+	- Vamos al header, buscamos lo siguiente y añadimos href=/registro:
+	<% if (user) { %>
+	...
+    <% } else { %>
+    <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/registro">Registro</a>
+    </li>
+
+VALIDACIONES CLIENTE:
+Realice las siguientes validaciones en la parte de cliente: compruebe que los dos campos de 
+contraseña coinciden y que la contraseña tiene al menos 8 caracteres. Si algo de lo anterior 
+falla, muéstrele un mensaje al usuario. Sólo si todo es correcto, envíe los datos al servidor
+
+	- Creamos carpeta javascript en /public/javascript/registroCli.js
+	- En header.ejs añadimos el script en <head>:
+	<script src="/javascript/registroCli.js" defer></script>
+	
+	- Editamos registro.ejs y añadimos lo siguiente (id="myform" onsubmit="return validarFormulario()") en la línea de form:
+	<form id="myform" onsubmit="return validarFormulario()" method="post" action="/registro">
+	
+	- Creamos la función validarFormulario en /public/javascript/registroCli.js
+	function validarFormulario() {
+		console.log('validar');
+		var password = document.getElementById('pass').value;
+		var confirmPassword = document.getElementById('pass2').value;
+
+		if (password.length < 8) {
+			alert('La contraseña debe tener al menos 8 caracteres.');
+		} else if (password !== confirmPassword) {
+			alert('Las contraseñas no coinciden.');
+		} else {
+			document.getElementById('myform').submit();
+			register
+		}
+	}
+

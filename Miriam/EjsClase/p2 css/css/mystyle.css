@@ -1,0 +1,96 @@
+/* CABECERA */
+.header {
+background-color: #fff1f1;
+text-align: center;
+padding: 30px;
+}
+.header h1 {
+font-size: 50px;
+color: #525252;
+}
+
+/* MENÚ INICIO*/
+.topnav{
+overflow: hidden;
+background-color: #525252;
+}
+.topnav a {
+float: left;
+display: block;
+color: #f2f2f2;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+/* Añade efecto al pasar por encima en el menú*/
+.topnav a:hover {
+background-color: #ffd7d9;
+color: black;
+}
+
+.inicio h2{
+	text-align: center;
+	color: #525252;
+}
+
+/* COLUMNAS BODY INICIO */
+.column {
+float: left;
+width: 50%;
+}
+
+.column h4{
+text-align: center;
+color: #061727;
+}
+
+.column p{
+text-align: center;
+color: #2d0709;
+}
+
+
+/* TABLA MENÚ  */
+.menu table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+/* encabezado */
+.menu th {
+  background-color: #525252;
+  color: #fff1f1;
+  padding: 10px;
+  text-align: left;
+}
+/* datos */
+.menu td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+/* filas impares */
+.menu tr:nth-child(odd) {
+  background-color: #fff0f7;
+}
+/* Estilo al pasar el ratón */
+.menu tr:hover {
+  background-color: #e0e0e0;
+}
+
+
+/* FORMULARIO */
+.form div {
+  margin-bottom: 20px;
+}
+.form label {
+  display: block; /* cada etiqueta en una nueva línea*/
+  font-weight: bold;
+}
+
+/* FOOTER */
+.footer {
+padding: 20px;
+text-align: right;
+background: #fff1f1;
+margin-top: 20px;
+}
